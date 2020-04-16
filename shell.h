@@ -9,6 +9,9 @@
 #include <sys/stat.h>
 #include <string.h>
 
+extern char **environ;
+
+char *space_eliminator(char *string);
 int _putchar(char c);
 char *_strdup(char *str);
 void free_all(char **arr);
@@ -30,5 +33,6 @@ int print_env(char *string, char **environ);
 void print_error(char *av, int counter, char *command);
 char **absolute_path(char *args, char *av, int counter);
 char **create_arr(char *arguments, char **env, char *av, int counter);
+
 
 #endif

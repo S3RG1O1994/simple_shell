@@ -1,53 +1,62 @@
 #include "shell.h"
 
-/**
- * main - Boot the shell with an infinite loop so that it is always active.
- * @ac: Cointains the numbers of vectors.
- * @av: Cointains the arguments.
- * @env: Contains de enviroment.
- *
- * Return: Allways is 0.
- */
-int main(__attribute__((unused)) int ac, char **av, char **env)
+void signalhandler(__attribute__((unused)) int n)
 {
-	ssize_t bytes_read;
-	size_t size = 0;
-	char *args = NULL, **arr = NULL;
-	pid_t pid;
-	int counter = 0, val;
+	write(STDOUT_FILENO, "\n$ ", 3);
+}
 
-	signal(SIGINT, SIG_IGN);
+int main(__attribute__((unused)) int ac, char **av)
+{
+	ssize_t bytes_read = 0;
+	size_t size = 0;
+	char *args = NULL, **arr = NULL, *tmp = NULL;
+	pid_t pid;
+	int count, r_isatty = 0;
+
+	if (!(isatty(STDIN_FILENO)))
+		r_isatty = 1;
+	signal(SIGINT, signalhandler);
 	while (1)
 	{
-		short_func(&counter);
+		count = 0;
+		if (r_isatty == 0)
+			write(STDOUT_FILENO, "$ ", 2);
 		bytes_read = getline(&args, &size, stdin);
 		if (bytes_read == -1)
-			return (free(args), _putchar('\n'), 0);
-		if (*args == '\n')
-			continue;
-		else
 		{
-			val = validator(args);
-			if (val != 0)
-				continue;
-			arr = create_arr(args, env, av[0], counter);
-			pid = fork();
-			if (pid > 0)
-				wait(&pid);
-			else if (pid == 0)
-			{
-				if (arr)
-				{
-					if (execve(arr[0], arr, NULL) == -1)
-						perror("Error execve:");
-				}
-				return (free(args), free(arr), 0);
-			}
-			else
-				perror("Error");
+			if(r_isatty == 0)
+				_putchar('\n');
+			return (free(args), 0);
 		}
-		if (arr)
-			free_all(arr);
+		while (args[count] != '\n')
+			count++;
+		args[count] = '\0';
+		arr = malloc(sizeof(char *) * 2);
+		if (!arr)
+		{
+			free(args);
+			return(0);
+		}
+		tmp = shortener(args);
+		arr[0] = space_eliminator(tmp);
+		arr[1] = NULL;
+		free(tmp);
+		pid = fork();
+		if (pid > 0)
+			wait(&pid);
+		else if (pid == 0)
+		{
+				if (execve(arr[0], arr, NULL) == -1)
+					perror(av[0]);
+				free(args);
+				free(arr[0]);
+				free(arr);
+				return (0);
+		}
+		else
+			perror("Error");
+		free(arr[0]);
+		free(arr);
 	}
-	return (free(args), 0);
+	return (0);
 }
