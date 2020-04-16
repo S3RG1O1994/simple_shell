@@ -9,7 +9,7 @@
  */
 int print_env(char *string, char **environ)
 {
-	unsigned int j = 0, h = 0;
+	unsigned int j = 0, h = 0, i;
 	char *env = "env";
 
 	while (string[j] != '\n')
@@ -21,7 +21,7 @@ int print_env(char *string, char **environ)
 
 	if (j == h)
 	{
-		for (unsigned int i = 0 ; environ[i] != NULL; i++)
+		for (i = 0 ; environ[i] != NULL; i++)
 		{
 			printf("%s\n", environ[i]);
 		}
