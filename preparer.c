@@ -1,13 +1,18 @@
 #include "shell.h"
 
+/**
+ * shortener - Function of delete space an begenning array.
+ * @string: Pointer an string of commands.
+ * Return: Duplicate string without space.
+ */
 char *shortener(char *string)
 {
 	int count, count_2 = 0, count_aux, size = 0;
 	char *dup = NULL;
 
 	for (count = 0; string[count] != '\n' && (string[count] == '\t' ||
-						  string[count] == ' ');
-	     count++)
+						string[count] == ' ');
+	count++)
 	{
 	}
 	count_aux = count;
@@ -29,6 +34,11 @@ char *shortener(char *string)
 	return (dup);
 }
 
+/**
+ * space_eliminator -  Function of delete space an finally array.
+ * @string: Pointer an string of commands.
+ * Return: Duplicate string without space.
+ */
 char *space_eliminator(char *string)
 {
 	int count = 0, count2 = 0, space_count = 0;
@@ -45,7 +55,7 @@ char *space_eliminator(char *string)
 
 	dup = malloc(sizeof(char) * count - space_count + 1);
 	if (!dup)
-		return(NULL);
+		return (NULL);
 	while (count2 < count - space_count)
 	{
 		dup[count2] = string[count2];
@@ -55,6 +65,11 @@ char *space_eliminator(char *string)
 	return (dup);
 }
 
+/**
+ * preparer - Function that call other functions for quit spaces.
+ * @args: Pointer an string of commands.
+ * Return: Duplicate string without space.
+ */
 char *preparer(char *args)
 {
 	char *tmp = NULL, *aux = NULL;
