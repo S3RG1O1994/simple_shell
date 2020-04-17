@@ -22,7 +22,7 @@ int main(__attribute__((unused)) int ac, char **av)
 	size_t size = 0;
 	char *args = NULL, **arr = NULL;
 	pid_t pid;
-	int r_isatty = 0;
+	int r_isatty = 0, val = 0;
 
 	if (!(isatty(STDIN_FILENO)))
 		r_isatty = 1;
@@ -38,6 +38,10 @@ int main(__attribute__((unused)) int ac, char **av)
 				_putchar('\n');
 			return (free(args), 0);
 		}
+
+		val = validator(args);
+		if (val != 0)
+			continue;
 		arr = create_arr(args);
 		pid = fork();
 		if (pid > 0)
