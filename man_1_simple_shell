@@ -28,7 +28,7 @@ The following commands are some examples of the commands that can be performed b
 
 -rm
 
-For more information about the commands and their options 
+For more information about the commands and their options
 .I (flags)
 please type man and the name of the command.
 .SH EXECUTION METHODS
