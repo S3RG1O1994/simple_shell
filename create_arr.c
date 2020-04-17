@@ -1,20 +1,25 @@
 #include "shell.h"
 
 /**
- * create_arr - function
- * @arguments: arguments
- * @av: the char pointer
- * @counter: the in counter
+ * create_arr - concatenates and unifies the arguments in an array.
+ * @arguments: All arguments
+ * @av: Name of program.
+ * @counter: the in general counter
+ * @args: Contains de arguments
  *
  * Return: matrix
  */
-char **create_arr(char *arguments, char *av, int counter)
+
+char **create_arr(char *arguments, char *av, int counter, char *args)
 {
 	char **arr = NULL;
 	char *real_path = _getenv("PATH", environ), *copy_path = NULL;
 	char *path = NULL, *vector = NULL;
-	int rreturn_stat = 0, count = 0, count_2 = 0;
+	int rreturn_stat = 0, count = 0, count_2 = 0, validator;
 
+	validator = _merge(arguments, environ, args);
+	if (validator == 0)
+		return (/*free(arguments),*/ NULL);
 	copy_path = _strdup(real_path);
 	if (arguments[0] == '/')
 	{
