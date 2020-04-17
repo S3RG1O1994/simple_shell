@@ -1,5 +1,11 @@
 #include "shell.h"
-
+/**
+ * process - Function administrator of process father and daugther.
+ * @arr: matrix of direction plus command for function exceve.
+ * @av: Name of program.
+ * @args: command insert by getline..
+ * Return: integrer Zero..
+ */
 int process(char **arr, char *av, char *args)
 {
 	pid_t pid;
@@ -19,6 +25,5 @@ int process(char **arr, char *av, char *args)
 	}
 	else
 		perror(av);
-	//free(args);
 	return (0);
 }
