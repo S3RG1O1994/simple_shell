@@ -130,7 +130,7 @@ C programming language
 
 ## Version
 
-Version of the current program: 1.0. For the versions available, see the (https://github.com/S3RG1O1994/prueba-shell). Pending change
+Version of the current program: 1.0. For the versions available, see the (https://github.com/S3RG1O1994/simple_shell). Pending change
 
 ## Authors
 
