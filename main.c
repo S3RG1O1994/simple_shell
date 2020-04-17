@@ -42,7 +42,7 @@ int main(__attribute__((unused)) int ac, char **av)
 		if (val != 0)
 			continue;
 		arguments = preparer(args);
-		arr = create_arr(arguments, av[0], counter);
+		arr = create_arr(arguments, av[0], counter, args);
 		if (arr)
 		{
 			process(arr, av[0], args);
