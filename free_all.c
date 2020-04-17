@@ -16,7 +16,7 @@ void free_all(char **arr)
 		free(arr[count]);
 		count++;
 	}
-	if(arr[count + 1])
+	if (arr[count + 1])
 	{
 		free(arr[count + 1]);
 	}
