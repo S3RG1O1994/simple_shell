@@ -1,5 +1,13 @@
 #include "shell.h"
 
+/**
+ * process - create process father and son
+ * @arr: array with arguments.
+ * @av: name of program.
+ * @args: original arguments
+ *
+ * Return: Allways 0
+ */
 int process(char **arr, char *av, char *args)
 {
 	pid_t pid;
@@ -19,6 +27,5 @@ int process(char **arr, char *av, char *args)
 	}
 	else
 		perror(av);
-	//free(args);
 	return (0);
 }

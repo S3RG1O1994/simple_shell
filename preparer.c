@@ -57,7 +57,7 @@ char *space_eliminator(char *string)
 
 	dup = malloc(sizeof(char) * count - space_count + 1);
 	if (!dup)
-		return(NULL);
+		return (NULL);
 	while (count2 < count - space_count)
 	{
 		dup[count2] = string[count2];
