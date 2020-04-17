@@ -3,12 +3,14 @@
 /**
  * create_arr - function
  * @arguments: arguments
+ * @av: the pointer char
+ * @counter: the int
  *
  * Return: matrix
  */
 char **create_arr(char *arguments, char *av, int counter)
 {
-	char /* *args = NULL, *tmp = NULL,*/ **arr = NULL;
+	char **arr = NULL;
 	char *real_path = _getenv("PATH", environ), *copy_path = NULL;
 	char *path = NULL, *vector = NULL;
 	int rreturn_stat = 0, count = 0, count_2 = 0;
