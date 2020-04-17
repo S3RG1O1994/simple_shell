@@ -9,12 +9,24 @@
 .B Simple Shell hsh
 Receives a command and execute it showing the output in screen.
 .SH COMMANDS
-The following commands cre some examples of the commands that can be performed by the Simple Shell 
+The following commands are some examples of the commands that can be performed by the Simple Shell
 .I hsh:
 
 -ls
 
 -pwd
+
+-cp
+
+-mv
+
+-cat
+
+-less
+
+-mkdir
+
+-rm
 
 For more information about the commands and their options 
 .I (flags)
