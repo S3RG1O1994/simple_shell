@@ -15,8 +15,8 @@ char **create_arr(char *arguments, char *av, int counter)
 	char *path = NULL, *vector = NULL;
 	int rreturn_stat = 0, count = 0;
 
-
-	if (arguments[0] == '.' && arguments[1] == '/')
+	if ((arguments[0] == '.' && arguments[1] == '/') ||
+		(arguments[0] == '.' && arguments[1] == '.' && arguments[2] == '/'))
 	{
 		arr = absolute_path(arguments, av, counter);
 		if (!arr)
