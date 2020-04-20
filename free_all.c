@@ -10,15 +10,12 @@ void free_all(char **arr)
 
 	while (arr[count])
 		count++;
-	count = 0;
-	while (count < 2 && arr[count])
-	{
-		free(arr[count]);
+	free(arr[0]);
+	if (arr[1])
+		free(arr[1]);
+	while (arr[count])
 		count++;
-	}
 	if (arr[count + 1])
-	{
 		free(arr[count + 1]);
-	}
 	free(arr);
 }

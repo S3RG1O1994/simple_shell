@@ -23,7 +23,6 @@ char **add_arr(char *str, char *command)
 		arr = simple_arr(command, (words - 1));
 		return (arr);
 	}
-
 	count = 0;
 	while (str[count_2] != ' ' && str[count_2] != '\0')
 		count_2++;

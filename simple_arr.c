@@ -16,5 +16,6 @@ char **simple_arr(char *command, int words)
 			return (NULL);
 		arr[0] = command;
 		arr[1] = NULL;
+		arr[2] = NULL;
 	return (arr);
 }
